@@ -69,13 +69,8 @@ namespace HCDropHearts
 
             if (plr.Difficulty != 2 || drop_amount == 0) return;
 
-            int itemIndex = Item.NewItem(null, (int)plr.X, (int)plr.Y, plr.TPlayer.width, plr.TPlayer.height, 29, drop_amount, true, 0, true);
-            if (plr.Difficulty == 2 && plr.TPlayer.dead)
-            {
-                plr.GiveItem(29, drop_amount);
-                TSPlayer.All.SendData(PacketTypes.ItemDrop, "", 29, itemIndex, 1);
-            }
-            
+            int itemIndex = Item.NewItem(null, (int)plr.X, (int)plr.Y, plr.TPlayer.width, plr.TPlayer.height, 29, drop_amount, false, 0, true);
+            // Item.NewItem appears to send packet from server by default
         }
 
         public static class PluginConfig
